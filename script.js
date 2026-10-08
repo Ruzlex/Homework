@@ -1,14 +1,8 @@
 (() => {
   "use strict";
 
-  /**
-   * Для реальной отправки заявки владельцу укажите endpoint сервиса-посредника.
-   * Formspree: строка вида "https://formspree.io/f/xxxxxxxx"
-   * Google Apps Script: URL развёрнутого веб-приложения
-   * Пока поле пустое — после валидации показывается успешное подтверждение
-   * без сетевой отправки (демо-режим для первой версии).
-   */
-  const FORM_ENDPOINT = "";
+  /** Formspree endpoint для реальной отправки заявок владельцу. */
+  const FORM_ENDPOINT = "https://formspree.io/f/xvkzaqvg";
 
   const form = document.getElementById("consult-form");
   const success = document.getElementById("form-success");
@@ -157,19 +151,17 @@
       submitBtn.textContent = "Отправляем…";
 
       try {
-        if (FORM_ENDPOINT) {
-          const response = await fetch(FORM_ENDPOINT, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-            body: JSON.stringify(payload),
-          });
+        const response = await fetch(FORM_ENDPOINT, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
 
-          if (!response.ok) {
-            throw new Error("submit_failed");
-          }
+        if (!response.ok) {
+          throw new Error("submit_failed");
         }
 
         showSuccess();
