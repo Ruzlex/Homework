@@ -2,7 +2,7 @@
   "use strict";
 
   /** Formspree endpoint для реальной отправки заявок владельцу. */
-  const FORM_ENDPOINT = "https://formspree.io/f/xvkzaqvg";
+  const FORM_ENDPOINT = "https://formspree.io/f/*******";
 
   const form = document.getElementById("consult-form");
   const success = document.getElementById("form-success");
